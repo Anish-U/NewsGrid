@@ -1,0 +1,33 @@
+<?php
+  require('./includes/functions.inc.php');
+  require('./includes/database.inc.php');
+  
+  session_start();
+
+  if(!isset($_GET['id'])) {
+    redirect('./index.php');
+  }
+  elseif ($_GET['id'] == '') {
+    redirect('./index.php');
+  }
+  else {
+    $article_id = $_GET['id'];
+  }
+  if(!isset($_SESSION['USER_LOGGED_IN'])) {
+    redirect('./user-login.php');
+  }
+  $bookmarkQuery = " DELETE FROM bookmark 
+                    WHERE user_id = {$_SESSION['USER_ID']}
+                    AND article_id = {$article_id}";
+  
+  $result = mysqli_query($con, $bookmarkQuery);
+  
+  if($result) {
+    redirect('./index.php');
+  }
+  else {
+    alert('Try Again Later');
+    redirect('./index.php');
+  }
+
+?>

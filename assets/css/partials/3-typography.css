@@ -1,0 +1,76 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-monts);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+p {
+  font-family: var(--ff-nunito);
+  margin: 0.5rem 0;
+}
+
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4,
+.bg-dark a,
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary h4,
+.bg-primary a,
+.bg-secondary h1,
+.bg-secondary h2,
+.bg-secondary h3,
+.bg-secondary h4,
+.bg-secondary a {
+  color: #fff;
+}
+
+.py-1 {
+  padding: 1.5rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+.px-3 {
+  padding: 0 3rem;
+}
+.p-1 {
+  padding: 1.5rem;
+}
+.pt-1 {
+  padding-top: 0.75rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+.text-center {
+  text-align: center;
+}
+
+.headings {
+  line-height: 2;
+  text-decoration: underline double var(--primary-color);
+  text-underline-offset: 10px;
+  margin-bottom: 20px;
+}
+
+.search-heading {
+  line-height: 2;
+  margin-bottom: 20px;
+}

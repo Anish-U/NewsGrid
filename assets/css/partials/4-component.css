@@ -1,0 +1,290 @@
+/* BG COLOR */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+.bg-dark {
+  background-color: var(--dark-color);
+}
+.bg-light {
+  background-color: var(--light-color);
+}
+.bg-standard {
+  background-color: var(--primary-color);
+}
+.bg-hover {
+  background-color: var(--hover-color);
+}
+.bg-active {
+  background-color: var(--active-color);
+}
+
+/* DISPLAY FLEX */
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTAINER */
+.container {
+  /* background-color: #fff; */
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  font-family: var(--ff-nunito);
+  font-size: var(--ts-sml);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--light-color);
+  padding: 0.4rem 0.9rem;
+  border-radius: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.tag a {
+  color: var(--light-color);
+}
+
+.tag-trend {
+  background: var(--tag-trend-color);
+}
+.tag-yellow {
+  color: var(--black-color);
+  background: var(--tag-yellow-color);
+}
+.tag-yellow a {
+  color: var(--black-color);
+}
+.tag-green {
+  color: var(--black-color);
+  background: var(--tag-green-color);
+}
+.tag-green a {
+  color: var(--black-color);
+}
+.tag-pink {
+  background: var(--tag-pink-color);
+}
+.tag-orange {
+  background: var(--tag-orange-color);
+}
+.tag-purple {
+  background: var(--tag-purple-color);
+}
+.tag-brown {
+  background: var(--tag-brown-color);
+}
+.tag-blue {
+  background: var(--tag-blue-color);
+}
+.tag-new {
+  background: var(--active-color);
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  border: none;
+  background: var(--dark-color);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--ff-nunito);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  transition: all 200ms ease-in-out;
+}
+
+.btn-light {
+  background: var(--light-color);
+  color: var(--dark-color);
+}
+.btn-primary {
+  background: var(--primary-color);
+}
+.btn-primary:hover {
+  background: var(--active-color);
+}
+.btn-secondary {
+  background: var(--secondary-color);
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--ts-sml);
+}
+.btn-secondary:hover {
+  background: var(--tag-orange-color);
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--ts-sml);
+  opacity: 0.9;
+}
+
+.btn-bookmark {
+  background: #105ae2;
+  font-weight: 700;
+  padding: 0.5rem 0.7rem;
+  font-size: var(--ts-sml);
+}
+.btn-bookmark:hover {
+  background: #0e7bad;
+}
+
+.btn-download {
+  background: #e21010;
+  font-weight: 700;
+  padding: 0.5rem 0.7rem;
+  font-size: var(--ts-sml);
+}
+.btn-download:hover {
+  background: #ad0e0e;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  /* background: var(--black-color); */
+  text-align: center;
+}
+.btn-card {
+  font-weight: 700;
+  background: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  font-size: var(--ts-sml);
+  border-radius: 0;
+}
+.btn-card:hover {
+  background: var(--tag-trend-color);
+}
+.btn-card span {
+  transition: all 200ms ease-in-out;
+}
+.btn-card:hover span {
+  padding-left: 18px;
+}
+/* CARDS */
+.card {
+  background: #fff;
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+  box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.268);
+}
+.card .tag {
+  font-size: var(--ts-vs);
+  font-weight: 800;
+}
+
+.card .card-img {
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.card .card-img img {
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: all 250ms ease-in-out;
+  height: inherit;
+}
+.card:hover img {
+  filter: grayscale(0);
+  transform: scale(1.06);
+}
+
+.card .card-title {
+  color: #333;
+  font-family: var(--ff-monts);
+  font-size: var(--ts-md);
+  font-weight: 800;
+  padding-top: 10px;
+  text-transform: uppercase;
+  transition: all 250ms ease-in-out;
+}
+
+.card .card-data {
+  font-size: var(--ts-sml);
+  padding-bottom: 10px;
+  padding-left: 5px;
+  text-align: justify;
+}
+
+.card .bookmark {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 10px;
+}
+
+.card .bookmark i {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.card-more {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.card-more::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+.card-more:hover::before {
+  width: 120%;
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* PAGINATION */
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  float: left;
+  padding: 8px 16px;
+  margin: 2px;
+  transition: all 200ms ease-in-out;
+}
+
+.pagination a.page-active {
+  background-color: var(--active-color);
+  color: white;
+  border-radius: var(--border-radius);
+}
+
+.pagination a.disabled {
+  cursor: auto;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.pagination a:hover:not(.page-active):not(.disabled) {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: 5px;
+}
+
+.w-100 {
+  width: 100%;
+}

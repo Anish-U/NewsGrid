@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  line-height: 1.5;
+  background: var(--light-color);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: #fff;
+}

@@ -1,0 +1,38 @@
+:root {
+  /* COLOR VARIABLES */
+  --primary-color: #c72727;
+  --secondary-color: #f99500;
+  --light-color: #f1f1f1;
+  --dark-color: #50514f;
+  --black-color: #333333;
+  --tag-trend-color: #fa163f;
+  --tag-yellow-color: #ffbe0b;
+  --tag-purple-color: #8338ec;
+  --tag-blue-color: #3a86ff;
+  --tag-green-color: #00ff73;
+  --tag-orange-color: #ef4339;
+  --tag-pink-color: #ff0a54;
+  --tag-brown-color: #663f3f;
+  --hover-color: #ee4444;
+  --active-color: #b90615;
+
+  /* FONT SIZE VARIABLES */
+  --ts-vs: 0.56rem;
+  --ts-sml: 0.8rem;
+  --ts-md: 1.1rem;
+  --ts-lg: 1.25rem;
+  --hs-vs: 1.3rem;
+  --hs-sml: 2rem;
+  --hs-md: 2.5rem;
+  --hs-lg: 3rem;
+
+  /* FONT FAMILY VARIABLES */
+
+  --ff-monts: "Montserrat", sans-serif;
+  --ff-nunito: "Nunito Sans", sans-serif;
+  --ff-noto: "Noto Serif", serif;
+  --ff-robo: "Roboto", sans-serif;
+
+  /* BORDER RADIUS */
+  --border-radius: 5px;
+}
