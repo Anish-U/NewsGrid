@@ -56,6 +56,11 @@
     $home = false;
     $page_title = "All Article";
   }
+
+  if(strpos($uri,"news.php") != false){
+    $home = false;
+    $page_title = "News Article";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +84,7 @@
   <link rel="stylesheet" href="./assets/css/responsivity/media-queries.css" />
 
   <!-- FAVICON LINK -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
 
   <!-- TITLE OF THE PAGE -->
   <title>NewsGrid | The Official News Portal | <?php echo $page_title; ?></title>

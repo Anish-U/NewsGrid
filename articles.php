@@ -26,6 +26,7 @@
                             FROM category, article
                             WHERE article.category_id = category.category_id
                             AND category.category_id = {$category_id}
+                            AND article.article_Active = 1
                             ORDER BY article.article_title LIMIT {$offset},{$limit}";
 
         }
@@ -33,6 +34,7 @@
           $articleQuery = " SELECT category.category_name, category.category_color, article.*
                             FROM category, article
                             WHERE article.category_id = category.category_id
+                            AND article.article_active = 1
                             ORDER BY article.article_title LIMIT {$offset},{$limit}";
         
         }
@@ -114,10 +116,10 @@
       $paginationQuery = "";
       if(isset($_GET['id']) && $_GET['id']!='') {
         $category_id = $_GET['id'];
-        $paginationQuery = "SELECT * FROM article WHERE article.category_id = {$category_id}";
+        $paginationQuery = "SELECT * FROM article WHERE article.category_id = {$category_id} AND article.article_active = 1";
       }
       else {
-        $paginationQuery = "SELECT * FROM article";
+        $paginationQuery = "SELECT * FROM article WHERE article_active = 1";
       }
       
       $paginationResult = mysqli_query($con, $paginationQuery);

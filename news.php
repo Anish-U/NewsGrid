@@ -15,6 +15,7 @@ require('./includes/nav.inc.php');
                     FROM category, article, author
                     WHERE article.category_id = category.category_id
                     AND article.author_id = author.author_id
+                    AND article.article_active = 1
                     AND article.article_id = {$article_id}";
   
   $bookmarked = false;
@@ -113,6 +114,7 @@ require('./includes/nav.inc.php');
                                       FROM article, author
                                       WHERE article.article_trend = 1
                                       AND article.author_id = author.author_id
+                                      AND article.article_active = 1
                                       AND NOT article.article_id = {$article_id}
                                       ORDER BY RAND() LIMIT 5";
             
@@ -151,6 +153,7 @@ require('./includes/nav.inc.php');
                                       FROM article, author
                                       WHERE article.category_id = {$cat_id}
                                       AND article.author_id = author.author_id
+                                      AND article.article_active = 1
                                       AND NOT article.article_id = {$_GET['id']}
                                       ORDER BY RAND() LIMIT 5";
             

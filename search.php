@@ -24,7 +24,7 @@
           <select name="category_select" id="category_select">
             <option value="">Select Any Category</option>
             <?php
-                $categoryQuery = "SELECT * FROM category";
+                $categoryQuery = "SELECT * FROM category ORDER BY category_name ASC";
                 $result = mysqli_query($con,$categoryQuery);
 
                 $row = mysqli_num_rows($result);
@@ -127,6 +127,8 @@
         else if($from_date == "" && $to_date != "") {
           $searchQuery .= ' AND article_date <= "'.$to_date.'"';
         }
+
+        $searchQuery .= " AND article_active = 1 ";
 
         $searchQuery1 = $searchQuery." ORDER BY article_title LIMIT {$offset}, {$limit}";
 

@@ -4,7 +4,11 @@
   require('./assets/vendor/autoload.php');
 
   session_start();
-
+  
+  if(!isset($_SESSION['USER_LOGGED_IN'])) {
+    alert('Please log in to Download Article');
+    redirect('./user-login.php');
+  }
   if(!isset($_GET['id'])) {
     redirect('./index.php');
   }
@@ -14,18 +18,21 @@
   else {
     $article_id = $_GET['id'];
   }
-  if(!isset($_SESSION['USER_LOGGED_IN'])) {
-    alert('Please log in to Download Article');
-    redirect('./user-login.php');
-  }
+  
 
   $articleQuery = " SELECT *
                     FROM article
-                    WHERE article_id = {$article_id}";
+                    WHERE article_id = {$article_id} 
+                    AND article_active = 1";
   
   $res = mysqli_query($con, $articleQuery);
-  
-  if(mysqli_num_rows($res)>0){
+  $row = mysqli_num_rows($res);
+
+  if($row == 0) {
+    redirect('./index.php');
+  }
+
+  if($row > 0){
 
 
     

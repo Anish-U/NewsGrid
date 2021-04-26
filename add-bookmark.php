@@ -17,6 +17,20 @@
     alert('Please log in to Add Bookmarks');
     redirect('./user-login.php');
   }
+
+  $articleQuery = " SELECT *
+                    FROM article
+                    WHERE article_id = {$article_id} 
+                    AND article_active = 1";
+  
+  
+  $res = mysqli_query($con, $articleQuery);
+  $row = mysqli_num_rows($res);
+
+  if($row == 0) {
+    redirect('./index.php');
+  }
+
   $bookmarkQuery = " INSERT INTO bookmark 
                     (user_id,article_id) 
                     VALUES 

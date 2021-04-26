@@ -29,6 +29,7 @@
                           FROM category, article, bookmark
                           WHERE article.category_id = category.category_id
                           AND bookmark.article_id = article.article_id
+                          AND article.article_active = 1
                           AND bookmark.user_id = {$_SESSION['USER_ID']}
                           ORDER BY article.article_title LIMIT {$offset},{$limit}";
 

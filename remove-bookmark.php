@@ -16,6 +16,19 @@
   if(!isset($_SESSION['USER_LOGGED_IN'])) {
     redirect('./user-login.php');
   }
+
+  $articleQuery = " SELECT *
+                    FROM article
+                    WHERE article_id = {$article_id} 
+                    AND article_active = 1";
+    
+  $res = mysqli_query($con, $articleQuery);
+  $row = mysqli_num_rows($res);
+
+  if($row == 0) {
+    redirect('./index.php');
+  }
+
   $bookmarkQuery = " DELETE FROM bookmark 
                     WHERE user_id = {$_SESSION['USER_ID']}
                     AND article_id = {$article_id}";
