@@ -14,6 +14,7 @@
   $home = true; 
   $login = false; 
   $bookmark = false; 
+  $changePass = false; 
   $category = false; 
   $search = false;
   
@@ -35,6 +36,13 @@
     $page_title = " Bookmarks";
     $home = false;
     $bookmark = true;
+  }
+  
+  // Checking if the page is Bookmarks Page
+  if(strpos($uri,"user-change-password.php") != false){
+    $page_title = " Change Password";
+    $home = false;
+    $changePass = true;
   }
   
   // Checking if the page is Home Page
@@ -162,8 +170,24 @@
       </li>
       <?php
         if(isset($_SESSION['USER_NAME'])) {
+          echo '
+          <li>
+            <label for="btn-2" class="show">Settings</label>
+            <a href="#"';
+            
+            if($changePass){
+              echo 'class="current" '; 
+            }
+          echo
+            '>Settings</a>
+            <input type="checkbox" id="btn-2" class="input" />
+            <ul>
+              <li><a href="./user-change-password.php">Change Password</a></li>
+              <li><a href="./logout.php">Logout</a></li>
+              </ul>
+          </li>
+          ';
           echo '<li><a disabled>Hello '.$_SESSION["USER_NAME"].' !</a></li>';
-          echo '<li><a href="./logout.php">Logout</a></li>';
         }
       ?>
     </ul>

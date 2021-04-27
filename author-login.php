@@ -8,45 +8,102 @@
     $loginPassword = get_safe_value($_POST['login-password']);
     
     $loginQuery = " SELECT * FROM author 
-                    WHERE author_email = '{$loginEmail}'
-                    AND author_password = '{$loginPassword}'";
+                    WHERE author_email = '{$loginEmail}'";
     
     $result = mysqli_query($con, $loginQuery);
     $rows = mysqli_num_rows($result);
     if($rows > 0) {
       while($data = mysqli_fetch_assoc($result)) {
-        $_SESSION['AUTHOR_NAME'] = $data['author_name'];
-        $_SESSION['AUTHOR_LOGGED_IN'] = "YES";
-        $_SESSION['AUTHOR_ID'] = $data['author_id'];
-        $_SESSION['AUTHOR_EMAIL'] = $data['author_email'];
-      }
-      unset($_SESSION['USER_NAME']);
-      unset($_SESSION['USER_LOGGED_IN']);
-      unset($_SESSION['USER_ID']);
-      unset($_SESSION['USER_EMAIL']);
-      redirect('./author/index.php');
+        $password_check = password_verify($loginPassword, $data['author_password']);
+        if($password_check) {
+
+          $_SESSION['AUTHOR_NAME'] = $data['author_name'];
+          $_SESSION['AUTHOR_LOGGED_IN'] = "YES";
+          $_SESSION['AUTHOR_ID'] = $data['author_id'];
+          $_SESSION['AUTHOR_EMAIL'] = $data['author_email'];
+
+          unset($_SESSION['USER_NAME']);
+          unset($_SESSION['USER_LOGGED_IN']);
+          unset($_SESSION['USER_ID']);
+          unset($_SESSION['USER_EMAIL']);
+          redirect('./author/index.php');
+        }
+        else {
+          alert("Wrong Password");
+          redirect('./author-login.php');
+        }
+      }     
     }
     else {
-      alert("Wrong Email or Password");
+      alert("This Email is not registered. Please Register");
+      redirect('./author-login.php');
     }
   }
 
   if(isset($_POST['signup-submit'])) {
-    echo $signupName = get_safe_value($_POST['signup-name']);
-    echo $signupEmail = get_safe_value($_POST['signup-email']);
-    echo $signupPassword = get_safe_value($_POST['signup-password']);
-    
-    $signupQuery = " INSERT INTO author 
-                    (author_name, author_email, author_password) 
-                    VALUES 
-                    ('{$signupName}', '{$signupEmail}', '{$signupPassword}')";
-    $result = mysqli_query($con, $signupQuery);
-    if($result) {
-      alert("Signup Successful, Please Login");
+    $signupName = get_safe_value($_POST['signup-name']);
+    $signupEmail = get_safe_value($_POST['signup-email']);
+    $signupPassword = get_safe_value($_POST['signup-password']);
+
+    $check_sql = "SELECT author_email FROM author 
+                  WHERE author_email = '{$signupEmail}'";
+    $check_result = mysqli_query($con,$check_sql);
+    $check_row = mysqli_num_rows($check_result);
+  
+    if($check_row > 0) {
+      alert("Email Already Exists");
       redirect('./author-login.php');
     }
     else {
-      echo "Error: ".mysqli_error($con);
+      $check_user_sql = "SELECT user_email FROM user 
+                         WHERE user_email = '{$signupEmail}'";
+      $check_user_result = mysqli_query($con,$check_user_sql);
+      $check_user_row = mysqli_num_rows($check_user_result);
+      $strg_pass = password_hash($signupPassword,PASSWORD_BCRYPT);
+      
+      if($check_user_row > 0) {
+        $signupQueryAuthor = " INSERT INTO author 
+                        (author_name, author_email, author_password) 
+                        VALUES 
+                        ('{$signupName}', '{$signupEmail}', '{$strg_pass}')";
+        $author_result = mysqli_query($con, $signupQueryAuthor);
+        
+        $signupQueryUser = "UPDATE user 
+                            SET user_name = '{$signupName}',
+                            user_password = '{$strg_pass}'
+                            WHERE user_email = '{$signupEmail}'";
+        $user_result = mysqli_query($con, $signupQueryUser);
+        
+        if($author_result && $user_result) {
+          alert("Author Signup Successful, Please Login");
+          redirect('./author-login.php');
+        }
+        else {
+          echo "Error: ".mysqli_error($con);
+        }
+      }
+      else {
+
+        $signupQueryAuthor = " INSERT INTO author 
+                        (author_name, author_email, author_password) 
+                        VALUES 
+                        ('{$signupName}', '{$signupEmail}', '{$strg_pass}')";
+        $author_result = mysqli_query($con, $signupQueryAuthor);
+        
+        $signupQueryUser = "INSERT INTO user 
+                        (user_name, user_email, user_password) 
+                        VALUES 
+                        ('{$signupName}', '{$signupEmail}', '{$strg_pass}')";
+        $user_result = mysqli_query($con, $signupQueryUser);
+        
+        if($user_result && $author_result) {
+          alert("Author and User Signup Successful, Please Login");
+          redirect('./author-login.php');
+        }
+        else {
+          echo "Error: ".mysqli_error($con);
+        }
+      }
     }
   }
 ?>

@@ -14,22 +14,33 @@
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
     $confirm_new_password = $_POST['confirm_new_password'];
+    
+    $str_new_pass = password_hash($new_password,PASSWORD_BCRYPT);
 
-    $sql = "SELECT author_password FROM author 
-            WHERE author_id = {$author_id}
-            AND author_password = '{$old_password}'";
+    $sql = "SELECT * FROM author 
+            WHERE author_id = {$author_id}";
     $result = mysqli_query($con,$sql);
     $rows = mysqli_num_rows($result);
     if($rows > 0) {
-      $update_sql = " UPDATE author 
-                      SET author_password = '{$new_password}'
-                      WHERE author_id = {$author_id}";
-      $update_result = mysqli_query($con,$update_sql);
-      if(!$update_result) {
-        alert("Sorry. Try again later !");
-      }
-      else {
-        alert("Password Updated !");
+      $data = mysqli_fetch_assoc($result);
+      $email = $data['author_email'];
+      $pasword_check = password_verify($old_password,$data['author_password']);
+      if($pasword_check) {
+        $update_sql = " UPDATE author, user
+                        SET author.author_password = '{$str_new_pass}',
+                        user.user_password = '{$str_new_pass}'
+                        WHERE author_id = {$author_id}
+                        AND user.user_email = '{$email}'";
+ 
+        $update_result = mysqli_query($con,$update_sql);
+        if(!$update_result) {
+          alert("Sorry. Try again later !");
+        }
+        else {
+          alert("Password Updated !");
+        }
+      }else {
+        alert("Wrong Password. Try again !");
       }
     }
     else {

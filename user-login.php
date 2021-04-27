@@ -1,5 +1,4 @@
 <?php
-  
   require('./includes/nav.inc.php');
   if(isset($_SESSION['USER_LOGGED_IN']) && $_SESSION['USER_LOGGED_IN'] == "YES") {
     redirect('./index.php');
@@ -9,45 +8,66 @@
     $loginPassword = get_safe_value($_POST['login-password']);
     
     $loginQuery = " SELECT * FROM user 
-                    WHERE user_email = '{$loginEmail}'
-                    AND user_password = '{$loginPassword}'";
+                    WHERE user_email = '{$loginEmail}'";
     
     $result = mysqli_query($con, $loginQuery);
     $rows = mysqli_num_rows($result);
     if($rows > 0) {
       while($data = mysqli_fetch_assoc($result)) {
-        $_SESSION['USER_NAME'] = $data['user_name'];
-        $_SESSION['USER_LOGGED_IN'] = "YES";
-        $_SESSION['USER_ID'] = $data['user_id'];
-        $_SESSION['USER_EMAIL'] = $data['user_email'];
-      }  
-      unset($_SESSION['AUTHOR_NAME']);
-      unset($_SESSION['AUTHOR_LOGGED_IN']);
-      unset($_SESSION['AUTHOR_ID']);
-      unset($_SESSION['AUTHOR_EMAIL']);
-      redirect('./index.php');
+        $password_check = password_verify($loginPassword, $data['user_password']);
+        if($password_check) {
+
+          $_SESSION['USER_NAME'] = $data['user_name'];
+          $_SESSION['USER_LOGGED_IN'] = "YES";
+          $_SESSION['USER_ID'] = $data['user_id'];
+          $_SESSION['USER_EMAIL'] = $data['user_email'];
+
+          unset($_SESSION['AUTHOR_NAME']);
+          unset($_SESSION['AUTHOR_LOGGED_IN']);
+          unset($_SESSION['AUTHOR_ID']);
+          unset($_SESSION['AUTHOR_EMAIL']);
+          redirect('./index.php');
+        }
+        else {
+          alert("Wrong Password");
+          redirect('./user-login.php');
+        }
+      }     
     }
     else {
-      alert("Wrong Email or Password");
+      alert("This Email is not registered. Please Register");
+      redirect('./user-login.php');
     }
   }
 
   if(isset($_POST['signup-submit'])) {
-    echo $signupName = get_safe_value($_POST['signup-name']);
-    echo $signupEmail = get_safe_value($_POST['signup-email']);
-    echo $signupPassword = get_safe_value($_POST['signup-password']);
+    $signupName = get_safe_value($_POST['signup-name']);
+    $signupEmail = get_safe_value($_POST['signup-email']);
+    $signupPassword = get_safe_value($_POST['signup-password']);
+    $strg_pass = password_hash($signupPassword,PASSWORD_BCRYPT);
     
-    $signupQuery = " INSERT INTO user 
-                    (user_name, user_email, user_password) 
-                    VALUES 
-                    ('{$signupName}', '{$signupEmail}', '{$signupPassword}')";
-    $result = mysqli_query($con, $signupQuery);
-    if($result) {
-      alert("Signup Successful, Please Login");
+    $check_sql = "SELECT user_email FROM user 
+                  WHERE user_email = '{$signupEmail}'";
+    $check_result = mysqli_query($con,$check_sql);
+    $check_row = mysqli_num_rows($check_result);
+    
+    if($check_row > 0) {
+      alert("Email Already Exists");
       redirect('./user-login.php');
     }
     else {
-      echo "Error: ".mysqli_error($con);
+      $signupQuery = "INSERT INTO user 
+                      (user_name, user_email, user_password) 
+                      VALUES 
+                      ('{$signupName}', '{$signupEmail}', '{$strg_pass}')";
+      $result = mysqli_query($con, $signupQuery);
+      if($result) {
+        alert("Signup Successful, Please Login");
+        redirect('./user-login.php');
+      }
+      else {
+        echo "Error: ".mysqli_error($con);
+      }
     }
   }
 ?>
