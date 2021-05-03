@@ -1,7 +1,9 @@
 <?php
+  // Fetching all the Functions and DB Code
   require('./includes/functions.inc.php');
   require('./includes/database.inc.php');
   
+  // Creates a session or resumes the current one based on a session identifier. 
   session_start();
 
   // Getting the URI From the Web
@@ -65,6 +67,7 @@
     $page_title = "All Article";
   }
 
+  // Checking if the page is New Article Page
   if(strpos($uri,"news.php") != false){
     $home = false;
     $page_title = "News Article";
@@ -124,16 +127,25 @@
         <input type="checkbox" id="btn-1" class="input" />
         <ul>
           <?php
+
+            // Category Query to fetch random 4 categories
             $categoryQuery= " SELECT  category_id, category_name
                               FROM category 
                               ORDER BY RAND() LIMIT 4";
 
+            // Running Category Query
             $result = mysqli_query($con,$categoryQuery);
 
+            // Returns the number of rows from the result retrieved.
             $row = mysqli_num_rows($result);
-            if($row > 0) {
-              while($data = mysqli_fetch_assoc($result)) {
             
+            // If query has any result (records) => If there are categories
+            if($row > 0) {
+              
+              // Fetching the data of particular record as an Associative Array
+              while($data = mysqli_fetch_assoc($result)) {
+                
+                // Storing the category data in variables
                 $category_id = $data['category_id'];
                 $category_name = $data['category_name'];
                 ?>
@@ -169,6 +181,8 @@
         </a>
       </li>
       <?php
+
+        // If user is logged in
         if(isset($_SESSION['USER_NAME'])) {
           echo '
           <li>
