@@ -74,7 +74,7 @@
     }
   }
 
-  // Whenever login button is pressed
+  // Whenever signup button is pressed
   if(isset($_POST['signup-submit'])) {
     
     // Fetching values via POST and passing them to user defined 
