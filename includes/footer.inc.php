@@ -63,8 +63,8 @@
       <h2>Join Us</h2>
       <ul class="box">
         <li>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
-          incidunt.
+          Share the story in your own words with the world. To Inspire with your writing make NewsGrid your platform to
+          help bring the stories of the globe to all people.
         </li>
         <a href="./author-login.php" class="my-1 btn btn-secondary">Sign Up</a>
       </ul>

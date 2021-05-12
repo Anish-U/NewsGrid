@@ -125,6 +125,7 @@
       $paginationQuery = "SELECT category.category_name, category.category_color, article.*
                           FROM category, article, bookmark
                           WHERE article.category_id = category.category_id
+                          AND article.article_active = 1
                           AND bookmark.article_id = article.article_id
                           AND bookmark.user_id = {$_SESSION['USER_ID']}";
       
