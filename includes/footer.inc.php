@@ -3,9 +3,8 @@
   <div class="footer-left">
     <a href="./index.php"><img src="./assets/images/logo_light.png" /></a>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsam
-      doloremque error nisi voluptatem voluptas molestias fugiat nostrum
-      rerum explicabo.
+      The collection point of world news. A one stop shop. We bring to you the current happenings around the world from
+      esteemed writers. Make sure to read up and keep up with us through this platform that we bring to you. NewsGrid
     </p>
     <div class="socials">
       <a href="#"><i class="fab fa-facebook"></i></a>
