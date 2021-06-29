@@ -30,7 +30,7 @@
     $sql = "INSERT INTO article 
             (category_id,author_id,article_title,article_image,article_description,article_date,article_trend,article_active) 
             VALUES 
-            (\"$article_cat_id\",\"$author_id\",\"$article_title\",\"$basename\",\"$article_desc\",\"$article_date\",0,1)"; 
+            (\"$article_cat_id\",\"$author_id\",\"$article_title\",\"$basename\",\"$article_desc\",\"$article_date\",0,0)"; 
 
     $result = mysqli_query($con, $sql); 
     
