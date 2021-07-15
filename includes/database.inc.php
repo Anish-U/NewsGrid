@@ -2,29 +2,30 @@
 
 // Development Connection
 // Server name or IP Address
-// $host = "localhost";
+$host = "localhost";
 
-// // MySQL Username
-// $user = "root";
+// MySQL Username
+$user = "root";
 
-// // MySQL Password
-// $pass = "";
+// MySQL Password
+$pass = "";
 
-// // Default Database name
-// $db = "news-portal";
+// Default Database name
+$db = "news-portal";
 
-// // Creating a connection to the DataBase
-// $con = mysqli_connect($host,$user,$pass,$db);
+// Creating a connection to the DataBase
+$con = mysqli_connect($host,$user,$pass,$db);
 
-// Deployment Connection
+/* Deployment Connection
 
-$host = "sql6.freesqldatabase.com";
-$user = "sql6425408";
-$pass = "Gw5PIf7DQY";
-$db = "sql6425408";
-$port = '3306';
+$host = "SERVER_URL";
+$user = "USERNAME";
+$pass = "PASSWORD";
+$db = "DATABASE_NAME";
+$port = 'PORT_NO';
 
 $con = mysqli_connect($host, $user, $pass, $db, $port);
+*/
 
 // Checking If the connection is obtained
 if (!$con) {
