@@ -1,23 +1,32 @@
 <?php
 
-  // Server name or IP Address
-  $host = "localhost";
-  
-  // MySQL Username
-  $user = "root";
-  
-  // MySQL Password
-  $pass = "";
+// Development Connection
+// Server name or IP Address
+// $host = "localhost";
 
-  // Default Database name
-  $db = "news-portal";
+// // MySQL Username
+// $user = "root";
 
-  // Creating a connection to the DataBase
-  $con = mysqli_connect($host,$user,$pass,$db);
+// // MySQL Password
+// $pass = "";
 
-  // Checking If the connection is obtained
-  if(!$con){
-    die("Database Connection Error");
-  }
+// // Default Database name
+// $db = "news-portal";
 
-?>
+// // Creating a connection to the DataBase
+// $con = mysqli_connect($host,$user,$pass,$db);
+
+// Deployment Connection
+
+$host = "sql6.freesqldatabase.com";
+$user = "sql6425408";
+$pass = "Gw5PIf7DQY";
+$db = "sql6425408";
+$port = '3306';
+
+$con = mysqli_connect($host, $user, $pass, $db, $port);
+
+// Checking If the connection is obtained
+if (!$con) {
+  die("Database Connection Error");
+}
