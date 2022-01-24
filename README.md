@@ -125,8 +125,9 @@ four modules being:
 #### 1. Retrieve the project (if you haven't done so already)
 
 ```git
- $ git clone git@github.com:Anish-U/Railway-Reservation.git
+ $ git clone https://github.com/Anish-U/NewsGrid.git
 ```
+or download the project via GitHub
 
 #### 2. Move project folder to htdocs folder
 
