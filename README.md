@@ -74,6 +74,19 @@ four modules being:
 
 ---
 
+## Project Diagrams
+
+#### Activity Diagram
+<img src="https://github.com/Anish-U/NewsGrid/blob/10688607a9c5eb8d4b967baccaac7e2d78adfaad/Diagrams/AD.jpg" width="500">
+
+#### Entity Relationship Diagram
+<img src="https://github.com/Anish-U/NewsGrid/blob/10688607a9c5eb8d4b967baccaac7e2d78adfaad/Diagrams/ER.jpeg" width="500">
+
+#### Database Design
+<img src="https://github.com/Anish-U/NewsGrid/blob/10688607a9c5eb8d4b967baccaac7e2d78adfaad/Diagrams/RS.jpeg" width="500">
+
+---
+
 ## Project Screenshots
 
 #### Home Page
