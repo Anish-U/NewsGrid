@@ -14,6 +14,11 @@ Technologies used:
 
 This project aims to develop a computerized and easy to access the day-to-day news without having to wait. “NewsGrid” is aimed at developing such an efficient website that helps in providing up to date news about various happenings around the world.
 
+```
+Admin login details: 
+email - admin@admin.com
+password - Admin123
+```
 
 #### [View Screenshots](https://github.com/Anish-U/NewsGrid#project-screenshots)
 
